@@ -1,31 +1,25 @@
-#include <limits.h>
-#include <math.h>
 #include <iostream>
-#include <cstring>
-#define ll long long
+#define ll long long int
 using namespace std;
 
 int main() {
     ll n;
     cin >> n;
-    ll a[n];
-    ll ct = n;
-    for (ll t=0;t<n;t+=2) {
-        a[t] = ct--;
-    }
-    ct = 1;
-    for (ll t=1;t<n;t+=2) {
-        a[t] = ct++;
+    if (n == 1) {
+        cout << 1;
+        return 0;
+    } else if (n == 2 || n == 3) {
+        cout << "NO SOLUTION";
+        return 0;
     }
 
-    for (ll t=0;t<n;t++) cout << a[t] << " ";
-    for (ll t=1;t<n;t++) {
-        if (abs(a[t] - a[t-1]) == 1) {
-            cout << "NO SOLUTION";
-            return 0;
-        }
+    if (n % 2 == 0) {
+        for (int t=2;t<=n;t+=2) cout << t << " ";
+
+        for (int t=1;t<n;t+=2) cout << t << " ";
+    } else {
+        for (int t=n-1;t>0;t-=2) cout << t << " ";
+
+        for (int t=n;t>0;t-=2) cout << t << " ";
     }
-
-    for (ll t=0;t<n;t++) cout << a[t] << " ";
-
 }
